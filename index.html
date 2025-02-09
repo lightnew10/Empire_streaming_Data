@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma liste</title>
+    <style>
+        body {
+            min-width: 400px;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            background-color: #292929;
+            color: white;
+        }
+        h2 {
+            text-align: center;
+        }
+        .movie-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .delete-btn {
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .movie-item a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Liste à regarder plus tard</h2>
+    <div id="movie-list"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
