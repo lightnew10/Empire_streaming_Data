@@ -7,7 +7,7 @@ Cette extension va vous servir pour ne plus être perdu dans vos envies.
 
 ## Features
 
-- Une liste dans l'extension de "à de rgarder plus tard"
+- Une liste dans l'extension de "à de regarder plus tard"
 - Retrait de certaines publicité génantes
 - Enregistré ses séries à l'épisode précis
 
