@@ -85,8 +85,6 @@
 
         //BUILD BUTTON ADD LIST
         const button = document.createElement("button");
-        target.style.display = "flex";
-        target.style.alignItems = "center";
         button.id = "watch-later-btn";
         button.textContent = "Ajouter à regarder plus tard";
         button.style.backgroundColor = "rgba(229,34,47,.45)";
@@ -121,9 +119,14 @@
             button.style.backgroundColor = "rgba(229,34,47,.45)";
         };
 
-        target.appendChild(button);
+        if (target) {
+            target.style.display = "flex";
+            target.style.alignItems = "center";
+            target.appendChild(button);
+        }
 
-        head.appendChild(parent);
+        if (head)
+            head.appendChild(parent);
         parent.appendChild(listButton);
         listButton.appendChild(span);
         listButton.appendChild(p);
