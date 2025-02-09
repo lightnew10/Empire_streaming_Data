@@ -3,17 +3,16 @@
 
 Cette extension va vous servir pour ne plus être perdu dans vos envies.
 
-
-
 ## Features
 
 - Une liste dans l'extension de "à de regarder plus tard"
 - Retrait de certaines publicité génantes
 - Enregistré ses séries à l'épisode précis
+- Annulation partielle des pubs quand on clique pour regarder un(e) film/série
 
 
 ## Futur features
-- Reprendre ses séries/films en cours
+- Reprendre ses séries/films en cours (avoir un visuel dans l'extension)
 - Reconaitre si on a déjà vue un film
 ## Authors
 

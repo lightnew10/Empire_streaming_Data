@@ -1,5 +1,5 @@
 (function () {
-    const url = window.location.href;
+    const url = window.location.href;        
 
     function isInsideBody(element) {
         while (element) {
@@ -244,14 +244,65 @@
     }
 
     let oldSaisonEpisode = "0-0";
+    let pageopened = false;
+    function openTempPage(time) {
+        const tempPage = window.open("", "_blank");
+        pageopened = true;
+    
+        if (tempPage) {
+            tempPage.document.write("<h1>Veuillez patienter 2 secondes...</h1>");
+            tempPage.document.title = "Patientez...";
+    
+            setTimeout(() => {
+                tempPage.close();
+                console.log("✅ Retour à la page principale !");
+                pageopened = false;
+            }, time);
+        } else {
+            console.warn("❌ Impossible d'ouvrir la page temporaire !");
+        }
+    }
     function checkURLParams() {
+        const appiframe = document.querySelector("iframe.iframe-respect");
+        const afterlink = document.querySelector("a.btn-ad-iframe");
+        if (afterlink) {
+            afterlink.href = "#";
+            afterlink.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (!pageopened)
+                    openTempPage(200);
+                return;
+            });
+        }
+        if (appiframe) {
+            const iframeDocument = appiframe.contentDocument || appiframe.contentWindow.document;
+            const link = iframeDocument.querySelector("a");
+            const button = iframeDocument.querySelector("button.btn-ad-iframe.p-r");
+            if (link) {
+                link.href = "#";
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    if (!pageopened)
+                        openTempPage(2000);
+                    return;
+                });
+            }
+            if (button) {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    if (!pageopened)
+                        openTempPage(200);
+                    return;
+                });
+            }
+        }
+
         const params = new URLSearchParams(window.location.search);
         const saison = params.get("saison");
         const episode = params.get("episode");
         const combined = saison + "-" + episode;
     
         if ((saison && episode) && oldSaisonEpisode != combined) {
-            console.log(`Nouvel épisode détecté : Saison ${saison}, Épisode ${episode}`);
             oldSaisonEpisode = combined;
     
             chrome.storage.local.get({ watchLater: [] }, function (data) {
@@ -271,5 +322,5 @@
     
     
     
-    let checkURLParameter = setInterval(() => checkURLParams(), 500);
+    let checkURLParameter = setInterval(() => checkURLParams(), 100);
 })();
